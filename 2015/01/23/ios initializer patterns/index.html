@@ -11,27 +11,27 @@
     
     <meta name="description" content="导语：
 
-前段时间在完成城市服务项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
-一、Designated initializer &amp;amp; Se">
+一、Designated initializer &amp;amp">
     
     
     <meta name="description" content="导语：
 
-前段时间在完成城市服务项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
 一、Designated initializer &amp; Secondary initializer
-ios对于方法的命名有不少约定，开发时需要注意遵循。如以al">
+ios对于方法的命名有不少约定，开发时需要注意遵循。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ios initializer patterns">
 <meta property="og:url" content="http://dadacomeon.com/2015/01/23/ios initializer patterns/">
 <meta property="og:site_name" content="第二棵菜">
 <meta property="og:description" content="导语：
 
-前段时间在完成城市服务项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
 一、Designated initializer &amp; Secondary initializer
-ios对于方法的命名有不少约定，开发时需要注意遵循。如以al">
+ios对于方法的命名有不少约定，开发时需要注意遵循。">
 <meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/d390d3b15563ad08e1288b706e97e69593002def">
 <meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/e4e59d0553f957cf059470d8f9ae2f7df7d5cab3">
 <meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/60d2996ebe9d64644cf11ea89159dc59a936c220">
@@ -40,10 +40,10 @@ ios对于方法的命名有不少约定，开发时需要注意遵循。如以al
 <meta name="twitter:title" content="ios initializer patterns">
 <meta name="twitter:description" content="导语：
 
-前段时间在完成城市服务项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
 一、Designated initializer &amp; Secondary initializer
-ios对于方法的命名有不少约定，开发时需要注意遵循。如以al">
+ios对于方法的命名有不少约定，开发时需要注意遵循。">
 
 
     
@@ -126,7 +126,7 @@ ios对于方法的命名有不少约定，开发时需要注意遵循。如以al
 		
 		<h4 id="导语："><code>导语：</code></h4>
 <blockquote>
-<p>前段时间在完成城市服务项目的过程中，曾碰到过一个困惑：当一个类定义有多个<code>init</code>方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有<code>init</code>方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    </p>
+<p>前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个<code>init</code>方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有<code>init</code>方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    </p>
 </blockquote>
 <h2 id="一、Designated_initializer_&amp;_Secondary_initializer">一、Designated initializer &amp; Secondary initializer</h2>
 <p>ios对于方法的命名有不少约定，开发时需要注意遵循。如以<code>alloc/new/copy/mutableCopy</code>起始的方法返回对象时，调用方是生成且持有该返回对象，而类似通过<code>[NSArray array]</code>这类方法取得对象则仅是持有对象。以<code>init</code>起始的方法苹果文档则有更严格的约束：</p>
