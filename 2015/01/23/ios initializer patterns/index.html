@@ -11,27 +11,27 @@
     
     <meta name="description" content="导语：
 
-前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
-一、Designated initializer &amp;amp">
+一、Designated initializer &amp;amp; Second">
     
     
     <meta name="description" content="导语：
 
-前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
 一、Designated initializer &amp; Secondary initializer
-ios对于方法的命名有不少约定，开发时需要注意遵循。">
+ios对于方法的命名有不少约定，开发时需要注意遵循。如以alloc/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ios initializer patterns">
 <meta property="og:url" content="http://dadacomeon.com/2015/01/23/ios initializer patterns/">
 <meta property="og:site_name" content="第二棵菜">
 <meta property="og:description" content="导语：
 
-前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
 一、Designated initializer &amp; Secondary initializer
-ios对于方法的命名有不少约定，开发时需要注意遵循。">
+ios对于方法的命名有不少约定，开发时需要注意遵循。如以alloc/">
 <meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/d390d3b15563ad08e1288b706e97e69593002def">
 <meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/e4e59d0553f957cf059470d8f9ae2f7df7d5cab3">
 <meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/60d2996ebe9d64644cf11ea89159dc59a936c220">
@@ -40,10 +40,10 @@ ios对于方法的命名有不少约定，开发时需要注意遵循。">
 <meta name="twitter:title" content="ios initializer patterns">
 <meta name="twitter:description" content="导语：
 
-前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
+前段时间在完成项目的过程中，曾碰到过一个困惑：当一个类定义有多个init方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有init方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    
 
 一、Designated initializer &amp; Secondary initializer
-ios对于方法的命名有不少约定，开发时需要注意遵循。">
+ios对于方法的命名有不少约定，开发时需要注意遵循。如以alloc/">
 
 
     
@@ -120,13 +120,13 @@ ios对于方法的命名有不少约定，开发时需要注意遵循。">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#导语："><span class="toc-number">1.</span> <span class="toc-text">导语：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Designated_initializer_&_Secondary_initializer"><span class="toc-number"></span> <span class="toc-text">一、Designated initializer & Secondary initializer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Initializer_patterns"><span class="toc-number"></span> <span class="toc-text">二、Initializer patterns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Bad_case"><span class="toc-number"></span> <span class="toc-text">三、Bad case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点思考"><span class="toc-number"></span> <span class="toc-text">一点思考</span></a>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#导语："><span class="toc-number">1.</span> <span class="toc-text">导语：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Designated_initializer_&_Secondary_initializer"><span class="toc-number"></span> <span class="toc-text">一、Designated initializer & Secondary initializer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Initializer_patterns"><span class="toc-number"></span> <span class="toc-text">二、Initializer patterns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Bad_case"><span class="toc-number"></span> <span class="toc-text">三、Bad case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、一点思考"><span class="toc-number"></span> <span class="toc-text">四、一点思考</span></a>
 		
 		</div>
 		
 		<h4 id="导语："><code>导语：</code></h4>
 <blockquote>
-<p>前段时间在完成自己的第一个ios项目过程中，曾碰到过一个困惑：当一个类定义有多个<code>init</code>方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有<code>init</code>方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    </p>
+<p>前段时间在完成项目的过程中，曾碰到过一个困惑：当一个类定义有多个<code>init</code>方法时，为什么可调用其中任何一个，会执行其类继承体系中的所有<code>init</code>方法，以及如何保证有序地执行？ 因此，便探索了一下其背后的机制。    </p>
 </blockquote>
 <h2 id="一、Designated_initializer_&amp;_Secondary_initializer">一、Designated initializer &amp; Secondary initializer</h2>
 <p>ios对于方法的命名有不少约定，开发时需要注意遵循。如以<code>alloc/new/copy/mutableCopy</code>起始的方法返回对象时，调用方是生成且持有该返回对象，而类似通过<code>[NSArray array]</code>这类方法取得对象则仅是持有对象。以<code>init</code>起始的方法苹果文档则有更严格的约束：</p>
@@ -176,7 +176,7 @@ ios对于方法的命名有不少约定，开发时需要注意遵循。">
 <blockquote>
 <p>如果CityServiceView的对象一直以init来初始化未暴露bug，将来若有一个View类继承自CityServiewView，则其无论调用继承体系中哪一个designated initializer，其对象都不会被完整地初始化。</p>
 </blockquote>
-<h2 id="一点思考">一点思考</h2>
+<h2 id="四、一点思考">四、一点思考</h2>
 <p>UIView的父类并不是NSObject，而是UIResponder。而UIView的designated initializer是在自定义的<code>initWithFrame:</code>里调用<code>[super init]</code>，然后重写<code>init</code>并在其中调用<code>[self initWithFrame:]</code>，其自定义designated initializer调用的并非其直系父类，而是NSObject的designated initializer，由此感觉可以推测一个结论：</p>
 <p><em>在initializer patterns基础上，当一个类的直系父类没有自定义的designated initializer时，可以越过其视直系祖父作为其super chain或重写的目标。若直系祖父也没有自定义的designated initializer，则以此在继承链上递推。</em></p>
   
@@ -236,7 +236,7 @@ var duoshuoQuery = {short_name:"dadacomeon"};
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#导语："><span class="toc-number">1.</span> <span class="toc-text">导语：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Designated_initializer_&_Secondary_initializer"><span class="toc-number"></span> <span class="toc-text">一、Designated initializer & Secondary initializer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Initializer_patterns"><span class="toc-number"></span> <span class="toc-text">二、Initializer patterns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Bad_case"><span class="toc-number"></span> <span class="toc-text">三、Bad case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点思考"><span class="toc-number"></span> <span class="toc-text">一点思考</span></a>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#导语："><span class="toc-number">1.</span> <span class="toc-text">导语：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Designated_initializer_&_Secondary_initializer"><span class="toc-number"></span> <span class="toc-text">一、Designated initializer & Secondary initializer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Initializer_patterns"><span class="toc-number"></span> <span class="toc-text">二、Initializer patterns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Bad_case"><span class="toc-number"></span> <span class="toc-text">三、Bad case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、一点思考"><span class="toc-number"></span> <span class="toc-text">四、一点思考</span></a>
  
   </div>
 
